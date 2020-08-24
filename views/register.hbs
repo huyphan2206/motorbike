@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script>
+        function checkFormName() 
+        {   
+            
+            let inputName = document.getElementById('txtName').value;
+            if (inputName.trim().length == 0) {
+                 alert('Name cannot be empty');
+                document.getElementById('lblNameError').innerText = "Not empty ";
+                return false;
+            } 
+
+            if (inputName.trim().length < 3 ) {
+                 alert('Name must have more than 3 characters');
+                document.getElementById('lblNameError').innerText = "More than 3 charaters ";
+                return false;
+            }          
+        }
+        
+        function checkFormEmail() 
+        {   
+            
+            let inputEmail = document.getElementById('txtEmail').value;
+            if (inputEmail.trim().length == 0) {
+                 alert('Email cannot be empty');
+                document.getElementById('lblEmailError').innerText = "Not empty ";
+                return false;
+            } 
+
+            if (inputEmail.trim().length < 3 ) {
+                 alert('Email must have more than 3 characters');
+                document.getElementById('lblEmailError').innerText = "More than 3 charaters ";
+                return false;
+            }          
+        }
+       
+    </script>
+    <style>
+    body {
+      background-image: url("https://images.asos-media.com/products/nike-air-force-1-07-waterless-dye-trainers-in-pink/14899740-1-siltred?$n_480w$&wid=476&fit=constrain");
+    }
+  </style>
+</head>
+<body>
+    <div class="container">
+       
+        <center>
+            <h1 style="color: red;">Register</h1>
+        </center>
+        <form action="/doRegister" method="post" onsubmit="return checkFormName(), checkFormEmail()">
+            <div class="form-group">
+                <label for="txtName">Name</label>
+                <input type="text" name="txtName" id="txtName" class="form-control">
+                <label id="lblNameError" style="color:red">{{model.nameError}}</label>
+            </div>
+        
+            <div class="form-group">
+                <label for="txtEmail">Email</label>
+                <input type="email" name="txtEmail" id="txtEmail" class="form-control">
+                <label id="lblEmailError" style="color:red">{{model.emailError}}</label>
+            </div>
+            <center>  <button type="submit" class="btn btn-default" value="Register">Register</button></center>
+        </form> 
+      
+    </div>
+</body>
+
+</html>
